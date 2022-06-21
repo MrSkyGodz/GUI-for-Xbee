@@ -152,9 +152,11 @@
     <None Include="Resources\ForceIndiaPink.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="imgs\araba.jpeg" />
     <Content Include="imgs\gauge.png" />
     <Content Include="imgs\ibre.png" />
     <None Include="imgs\racingblack.png" />
+    <Content Include="imgs\racinglogo.png" />
     <Content Include="Resources\racingblack.png" />
   </ItemGroup>
   <ItemGroup>

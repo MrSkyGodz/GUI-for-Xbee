@@ -19,11 +19,7 @@ namespace GUI_for_Arduino
     {
         public string msg;
         public byte[] bytes_received = new byte[100];
-
-        int angle = 0;
         double time = 0;
-        Image img;
-
         Timer myTimer = new Timer();
         Random random = new Random();
 
@@ -68,14 +64,15 @@ namespace GUI_for_Arduino
             timer1.Interval = 50;
 
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            
-            
             chart2.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            
+            chart3.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart4.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+
 
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //chart 1
             chart1.Series[0].Points.AddXY(time, 3 * Math.Sin(5 + time) + 5 * Math.Cos(3 + time));
 
             if (chart1.Series[0].Points.Count > 100)
@@ -86,7 +83,7 @@ namespace GUI_for_Arduino
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
             chart1.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
 
-
+            // chart 2
             chart2.Series[0].Points.AddXY(time, 3 * Math.Sin(5 + time) + 5 * Math.Cos(3 + time));
 
             if (chart2.Series[0].Points.Count > 100)
@@ -96,7 +93,29 @@ namespace GUI_for_Arduino
             chart2.ChartAreas[0].AxisX.Maximum = (float)time;
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
             chart2.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
+            // chart 3
+            chart3.Series[0].Points.AddXY(time, (double)battery_heat);
 
+            if (chart3.Series[0].Points.Count > 1000)
+                chart3.Series[0].Points.RemoveAt(0);
+
+            chart3.ChartAreas[0].AxisY.Minimum = 0;
+            chart3.ChartAreas[0].AxisY.Maximum = 100;
+            chart3.ChartAreas[0].AxisX.Minimum = chart3.Series[0].Points[0].XValue;
+            chart3.ChartAreas[0].AxisX.Maximum = time;
+            chart3.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
+            chart3.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
+
+            // chart 4
+            chart4.Series[0].Points.AddXY(time, (double)speed_);
+
+            if (chart4.Series[0].Points.Count > 500)
+                chart4.Series[0].Points.RemoveAt(0);
+
+            chart4.ChartAreas[0].AxisX.Minimum = chart4.Series[0].Points[0].XValue;
+            chart4.ChartAreas[0].AxisX.Maximum = time;
+            chart4.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
+            chart4.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
 
             //speed
             gauge1.Value = (int)speed_;
@@ -509,6 +528,16 @@ namespace GUI_for_Arduino
         }
 
         private void label8_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void chart1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
         {
 
         }

@@ -63,9 +63,9 @@ namespace GUI_for_Arduino.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ForceIndiaPink {
+        internal static System.Drawing.Bitmap araba {
             get {
-                object obj = ResourceManager.GetObject("ForceIndiaPink", resourceCulture);
+                object obj = ResourceManager.GetObject("araba", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,19 @@ namespace GUI_for_Arduino.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap racingblack {
+        internal static System.Drawing.Bitmap racinglogo {
             get {
-                object obj = ResourceManager.GetObject("racingblack", resourceCulture);
+                object obj = ResourceManager.GetObject("racinglogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap racinglogo1 {
+            get {
+                object obj = ResourceManager.GetObject("racinglogo1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
