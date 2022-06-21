@@ -41,6 +41,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -85,6 +86,8 @@
             this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label6 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -118,15 +121,16 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.Text = "COM3";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(26, 673);
+            this.richTextBox1.Location = new System.Drawing.Point(26, 103);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(456, 78);
+            this.richTextBox1.Size = new System.Drawing.Size(360, 35);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -153,7 +157,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.Location = new System.Drawing.Point(5, 11);
             this.label1.Name = "label1";
@@ -219,7 +223,7 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Location = new System.Drawing.Point(26, 116);
+            this.panel3.Location = new System.Drawing.Point(26, 154);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(268, 65);
             this.panel3.TabIndex = 13;
@@ -231,11 +235,11 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.ForeColor = System.Drawing.SystemColors.Window;
-            this.label7.Location = new System.Drawing.Point(985, 316);
+            this.label7.Location = new System.Drawing.Point(1081, 316);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 25);
             this.label7.TabIndex = 10;
-            this.label7.Text = "125°C";
+            this.label7.Text = "100°C";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
@@ -253,7 +257,7 @@
             legend1.Name = "Legend1";
             legend1.TextWrapThreshold = 10;
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(26, 383);
+            this.chart1.Location = new System.Drawing.Point(92, 383);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart1.PaletteCustomColors = new System.Drawing.Color[] {
@@ -265,7 +269,7 @@
             series1.Name = "Series1";
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(456, 131);
+            this.chart1.Size = new System.Drawing.Size(405, 131);
             this.chart1.TabIndex = 17;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click_1);
@@ -280,7 +284,7 @@
             legend2.Name = "Legend1";
             legend2.TextWrapThreshold = 10;
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(27, 525);
+            this.chart2.Location = new System.Drawing.Point(92, 554);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart2.PaletteCustomColors = new System.Drawing.Color[] {
@@ -292,7 +296,7 @@
             series2.Name = "Series1";
             series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(456, 131);
+            this.chart2.Size = new System.Drawing.Size(405, 131);
             this.chart2.TabIndex = 17;
             this.chart2.Text = "chart2";
             this.chart2.Click += new System.EventHandler(this.chart2_Click_1);
@@ -305,7 +309,7 @@
             this.panel7.Controls.Add(this.label9);
             this.panel7.Controls.Add(this.textBox3);
             this.panel7.Controls.Add(this.textBox4);
-            this.panel7.Location = new System.Drawing.Point(26, 198);
+            this.panel7.Location = new System.Drawing.Point(26, 226);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(268, 65);
             this.panel7.TabIndex = 13;
@@ -314,7 +318,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.Location = new System.Drawing.Point(5, 11);
             this.label3.Name = "label3";
@@ -356,7 +360,7 @@
             this.panel8.Controls.Add(this.label11);
             this.panel8.Controls.Add(this.textBox5);
             this.panel8.Controls.Add(this.textBox6);
-            this.panel8.Location = new System.Drawing.Point(26, 273);
+            this.panel8.Location = new System.Drawing.Point(26, 298);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(268, 65);
             this.panel8.TabIndex = 13;
@@ -365,7 +369,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label10.Location = new System.Drawing.Point(5, 11);
             this.label10.Name = "label10";
@@ -394,7 +398,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(143, 37);
+            this.textBox6.Location = new System.Drawing.Point(143, 33);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 6;
@@ -405,7 +409,7 @@
             this.label13.BackColor = System.Drawing.Color.Black;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.7F);
             this.label13.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label13.Location = new System.Drawing.Point(583, 315);
+            this.label13.Location = new System.Drawing.Point(591, 315);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 25);
             this.label13.TabIndex = 12;
@@ -419,7 +423,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.7F);
             this.label4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label4.Location = new System.Drawing.Point(415, 246);
+            this.label4.Location = new System.Drawing.Point(423, 246);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 25);
             this.label4.TabIndex = 21;
@@ -433,11 +437,11 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.7F);
             this.label5.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label5.Location = new System.Drawing.Point(777, 253);
+            this.label5.Location = new System.Drawing.Point(785, 253);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 25);
+            this.label5.Size = new System.Drawing.Size(56, 25);
             this.label5.TabIndex = 22;
-            this.label5.Text = "0kw";
+            this.label5.Text = "0 kw";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label5.Click += new System.EventHandler(this.label5_Click_1);
             // 
@@ -446,7 +450,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.LightGreen;
-            this.label12.Location = new System.Drawing.Point(441, 16);
+            this.label12.Location = new System.Drawing.Point(449, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 24);
             this.label12.TabIndex = 23;
@@ -458,7 +462,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label14.Location = new System.Drawing.Point(584, 37);
+            this.label14.Location = new System.Drawing.Point(592, 37);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(99, 24);
             this.label14.TabIndex = 24;
@@ -468,8 +472,8 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.DarkRed;
-            this.label15.Location = new System.Drawing.Point(728, 24);
+            this.label15.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label15.Location = new System.Drawing.Point(736, 24);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(74, 24);
             this.label15.TabIndex = 25;
@@ -480,7 +484,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label8.Location = new System.Drawing.Point(947, 286);
+            this.label8.Location = new System.Drawing.Point(1043, 286);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(144, 24);
             this.label8.TabIndex = 27;
@@ -502,7 +506,7 @@
             this.gauge4.ForeColor = System.Drawing.Color.Transparent;
             this.gauge4.isArcEnabled = true;
             this.gauge4.isCustomNeedleEnabled = false;
-            this.gauge4.Location = new System.Drawing.Point(890, 154);
+            this.gauge4.Location = new System.Drawing.Point(986, 154);
             this.gauge4.MaxValue = new decimal(new int[] {
             1000,
             0,
@@ -557,7 +561,7 @@
             // 
             this.gauge1.ArcColor = System.Drawing.Color.DeepSkyBlue;
             this.gauge1.ArcEndAngle = 420F;
-            this.gauge1.ArcRadius = 110F;
+            this.gauge1.ArcRadius = 105F;
             this.gauge1.ArcStartAngle = 120F;
             this.gauge1.ArcWidth = 2F;
             this.gauge1.BackColor = System.Drawing.Color.Transparent;
@@ -568,7 +572,7 @@
             this.gauge1.ForeColor = System.Drawing.Color.Transparent;
             this.gauge1.isArcEnabled = true;
             this.gauge1.isCustomNeedleEnabled = false;
-            this.gauge1.Location = new System.Drawing.Point(480, 64);
+            this.gauge1.Location = new System.Drawing.Point(488, 64);
             this.gauge1.MaxValue = new decimal(new int[] {
             1000,
             0,
@@ -584,7 +588,7 @@
             this.gauge1.NeedleCenterRadius = 10F;
             this.gauge1.NeedleColor = System.Drawing.Color.Red;
             this.gauge1.NeedleImage = null;
-            this.gauge1.NeedleSize = new System.Drawing.Size(4, 100);
+            this.gauge1.NeedleSize = new System.Drawing.Size(4, 130);
             this.gauge1.NumberMarkerAngleBegin = 120F;
             this.gauge1.NumberMarkerAngleEnd = 420F;
             this.gauge1.NumberMarkerAngleInterval = 18F;
@@ -595,7 +599,7 @@
             0,
             0,
             0});
-            this.gauge1.NumberMarkerOffset = 15;
+            this.gauge1.NumberMarkerOffset = 20;
             this.gauge1.NumberMarkerValueBegin = new decimal(new int[] {
             0,
             0,
@@ -621,7 +625,7 @@
             // 
             // gauge3
             // 
-            this.gauge3.ArcColor = System.Drawing.Color.DarkRed;
+            this.gauge3.ArcColor = System.Drawing.Color.OrangeRed;
             this.gauge3.ArcEndAngle = 240F;
             this.gauge3.ArcRadius = 65F;
             this.gauge3.ArcStartAngle = 420F;
@@ -634,7 +638,7 @@
             this.gauge3.ForeColor = System.Drawing.Color.Transparent;
             this.gauge3.isArcEnabled = true;
             this.gauge3.isCustomNeedleEnabled = false;
-            this.gauge3.Location = new System.Drawing.Point(671, 51);
+            this.gauge3.Location = new System.Drawing.Point(679, 51);
             this.gauge3.MaxValue = new decimal(new int[] {
             1000,
             0,
@@ -650,7 +654,7 @@
             this.gauge3.NeedleCenterRadius = 7F;
             this.gauge3.NeedleColor = System.Drawing.Color.Red;
             this.gauge3.NeedleImage = null;
-            this.gauge3.NeedleSize = new System.Drawing.Size(2, 60);
+            this.gauge3.NeedleSize = new System.Drawing.Size(2, 80);
             this.gauge3.NumberMarkerAngleBegin = 240F;
             this.gauge3.NumberMarkerAngleEnd = 420F;
             this.gauge3.NumberMarkerAngleInterval = 18F;
@@ -700,7 +704,7 @@
             this.gauge2.ForeColor = System.Drawing.Color.Transparent;
             this.gauge2.isArcEnabled = true;
             this.gauge2.isCustomNeedleEnabled = false;
-            this.gauge2.Location = new System.Drawing.Point(393, 43);
+            this.gauge2.Location = new System.Drawing.Point(401, 43);
             this.gauge2.MaxValue = new decimal(new int[] {
             1000,
             0,
@@ -716,7 +720,7 @@
             this.gauge2.NeedleCenterRadius = 7F;
             this.gauge2.NeedleColor = System.Drawing.Color.Red;
             this.gauge2.NeedleImage = null;
-            this.gauge2.NeedleSize = new System.Drawing.Size(2, 60);
+            this.gauge2.NeedleSize = new System.Drawing.Size(2, 80);
             this.gauge2.NumberMarkerAngleBegin = 120F;
             this.gauge2.NumberMarkerAngleEnd = 300F;
             this.gauge2.NumberMarkerAngleInterval = 18F;
@@ -756,7 +760,7 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::GUI_for_Arduino.Properties.Resources.araba;
-            this.pictureBox1.Location = new System.Drawing.Point(517, 383);
+            this.pictureBox1.Location = new System.Drawing.Point(532, 383);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(215, 368);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -767,7 +771,7 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::GUI_for_Arduino.Properties.Resources.racinglogo1;
-            this.pictureBox6.Location = new System.Drawing.Point(920, 7);
+            this.pictureBox6.Location = new System.Drawing.Point(1010, 16);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(220, 134);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -784,7 +788,7 @@
             legend3.Name = "Legend1";
             legend3.TextWrapThreshold = 10;
             this.chart3.Legends.Add(legend3);
-            this.chart3.Location = new System.Drawing.Point(751, 383);
+            this.chart3.Location = new System.Drawing.Point(781, 383);
             this.chart3.Name = "chart3";
             this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart3.PaletteCustomColors = new System.Drawing.Color[] {
@@ -810,7 +814,7 @@
             legend4.Name = "Legend1";
             legend4.TextWrapThreshold = 10;
             this.chart4.Legends.Add(legend4);
-            this.chart4.Location = new System.Drawing.Point(751, 554);
+            this.chart4.Location = new System.Drawing.Point(781, 554);
             this.chart4.Name = "chart4";
             this.chart4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart4.PaletteCustomColors = new System.Drawing.Color[] {
@@ -831,7 +835,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label6.Location = new System.Drawing.Point(873, 522);
+            this.label6.Location = new System.Drawing.Point(903, 522);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(144, 24);
             this.label6.TabIndex = 24;
@@ -843,11 +847,33 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label16.Location = new System.Drawing.Point(895, 695);
+            this.label16.Location = new System.Drawing.Point(925, 695);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(99, 24);
             this.label16.TabIndex = 24;
             this.label16.Text = "VELOCITY";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label17.Location = new System.Drawing.Point(227, 522);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(135, 24);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "REAR DAMPER";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label18.Location = new System.Drawing.Point(222, 695);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(149, 24);
+            this.label18.TabIndex = 30;
+            this.label18.Text = "FRONT DAMPER";
             // 
             // Form1
             // 
@@ -855,7 +881,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.ClientSize = new System.Drawing.Size(1165, 763);
+            this.ClientSize = new System.Drawing.Size(1264, 761);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.chart3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label8);
@@ -881,7 +909,11 @@
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.gauge2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
@@ -949,6 +981,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }
 

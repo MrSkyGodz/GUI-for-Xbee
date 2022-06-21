@@ -112,6 +112,8 @@ namespace GUI_for_Arduino
             if (chart4.Series[0].Points.Count > 500)
                 chart4.Series[0].Points.RemoveAt(0);
 
+            chart4.ChartAreas[0].AxisY.Minimum = 0;
+            chart4.ChartAreas[0].AxisY.Maximum = 200;
             chart4.ChartAreas[0].AxisX.Minimum = chart4.Series[0].Points[0].XValue;
             chart4.ChartAreas[0].AxisX.Maximum = time;
             chart4.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
@@ -141,6 +143,8 @@ namespace GUI_for_Arduino
             //power
             gauge3.Value = 0;
             label5.Text = "0 kw";
+            
+            
 
 
             time += 0.1;
@@ -185,7 +189,7 @@ namespace GUI_for_Arduino
 
                 time_stamp = (char)0;
 
-                //Console.WriteLine(text);
+                Console.WriteLine(time_stamp);
                 
                 time_stamp = Convert.ToChar(bytes_received[0]);
 
@@ -269,6 +273,7 @@ namespace GUI_for_Arduino
 
 
                     }));
+                    
                 }
 
                 
