@@ -49,7 +49,7 @@ namespace GUI_for_Arduino
         {
             //image box
             Image formula_img = pictureBox6.Image;
-            formula_img.RotateFlip(RotateFlipType.Rotate270FlipX);
+            //formula_img.RotateFlip(RotateFlipType.Rotate270FlipX);
             pictureBox6.Image = formula_img;
 
 
@@ -99,12 +99,14 @@ namespace GUI_for_Arduino
 
 
             //speed
-            circularProgressBar2.Value = (int)speed_;
-            label12.Text = speed_.ToString();
+            gauge1.Value = (int)speed_;
+            label13.Text = " " + speed_.ToString() + " km/h";
             //battery percentage
-            label8.Text =  "%" + battery_percentage.ToString();
+            gauge2.Value = (int)battery_percentage;
+            label4.Text =  "%" + battery_percentage.ToString();
             //battery heat
             label7.Text = battery_heat.ToString() + " °C";
+            gauge4.Value = (int)battery_heat;
             //battery voltage
             textBox2.Text = battery_voltage.ToString() + " V";
             //battery current
@@ -117,7 +119,9 @@ namespace GUI_for_Arduino
             textBox5.Text = vsm.ToString();
             //internal fault
             textBox6.Text = internal_faults.ToString();
-
+            //power
+            gauge3.Value = 0;
+            label5.Text = "0 kw";
 
 
             time += 0.1;
@@ -128,6 +132,7 @@ namespace GUI_for_Arduino
         void refresh_ports()
         {
             string[] ports = SerialPort.GetPortNames();
+            System.Console.WriteLine(ports);
             comboBox1.Items.Clear();
             // Display each port name to the console.
             foreach (string port in ports)
@@ -156,7 +161,7 @@ namespace GUI_for_Arduino
             {
                 Console.WriteLine("Success");
 
-                serialPort1.Read(bytes_received, 0, 20);
+                serialPort1.Read(bytes_received, 0, 21);
                 uint t = 0;
 
                 time_stamp = (char)0;
@@ -165,7 +170,7 @@ namespace GUI_for_Arduino
                 
                 time_stamp = Convert.ToChar(bytes_received[0]);
 
-                Console.WriteLine(time_stamp);
+                Console.WriteLine(bytes_received.ToString());
 
                 if (time_stamp == '$')
                 {
@@ -273,7 +278,7 @@ namespace GUI_for_Arduino
             }
             catch
             {
-                MessageBox.Show("Couldn't open Port", "Error-322EDA23");
+                MessageBox.Show("Something gone wrong..", "Error-322EDA23");
             }
         }
 
@@ -292,7 +297,12 @@ namespace GUI_for_Arduino
                 {
                     richTextBox1.AppendText("Starting connection..\n");
                 }));
-                serialPort1.Open();
+                try { serialPort1.Open(); }
+                catch
+                {
+                    MessageBox.Show("Couldn't open Port", "Error-322EDA23");
+                }
+                
             }
             else
             {
@@ -454,6 +464,51 @@ namespace GUI_for_Arduino
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void circularProgressBar2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gauge2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click_1(object sender, EventArgs e)
         {
 
         }
