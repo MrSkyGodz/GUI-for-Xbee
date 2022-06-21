@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\Racing\GUI\GUI v1.0\</PublishUrl>
+    <PublishUrl>C:\Users\nuke\Desktop\Racing_Gui_v2.0\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -54,13 +54,13 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>D4CA278C89CB724D5DA25360D54A5D43F276665E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>GUI for Arduino_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
-      <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageProcessor, Version=2.9.1.225, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageProcessor.2.9.1\lib\net452\ImageProcessor.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="ProgressBar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -96,9 +96,6 @@
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
-      <HintPath>..\packages\WinFormAnimation.1.6.0.4\lib\net40\WinFormAnimation.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -152,22 +149,26 @@
     <None Include="Resources\ForceIndiaPink.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="araba.jpeg" />
     <Content Include="imgs\araba.jpeg" />
+    <Content Include="imgs\arabatepeden.png" />
     <Content Include="imgs\gauge.png" />
     <Content Include="imgs\ibre.png" />
     <None Include="imgs\racingblack.png" />
+    <Content Include="imgs\logobeyaz.ico" />
+    <Content Include="imgs\logobeyaz.png" />
     <Content Include="imgs\racinglogo.png" />
     <Content Include="Resources\racingblack.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 ve x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 </ProductName>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>

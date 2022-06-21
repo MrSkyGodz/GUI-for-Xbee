@@ -35,6 +35,7 @@ namespace GUI_for_Arduino
         uint motor_heat;
         uint inverter_heat;
         uint speed_ = 0; 
+
         
         public Form1()
         {
@@ -545,6 +546,16 @@ namespace GUI_for_Arduino
         private void label6_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void elementHost1_ChildChanged_1(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+            progressBar1
         }
     }
 }

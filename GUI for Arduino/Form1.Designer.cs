@@ -80,24 +80,24 @@
             this.gauge1 = new GaugeControl.Gauge();
             this.gauge3 = new GaugeControl.Gauge();
             this.gauge2 = new GaugeControl.Gauge();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label6 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -756,28 +756,6 @@
             0});
             this.gauge2.Load += new System.EventHandler(this.gauge2_Load);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = global::GUI_for_Arduino.Properties.Resources.araba;
-            this.pictureBox1.Location = new System.Drawing.Point(532, 383);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(215, 368);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 28;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = global::GUI_for_Arduino.Properties.Resources.racinglogo1;
-            this.pictureBox6.Location = new System.Drawing.Point(1010, 16);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(220, 134);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 18;
-            this.pictureBox6.TabStop = false;
-            // 
             // chart3
             // 
             this.chart3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
@@ -875,6 +853,29 @@
             this.label18.TabIndex = 30;
             this.label18.Text = "FRONT DAMPER";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::GUI_for_Arduino.Properties.Resources.arabatepeden;
+            this.pictureBox1.Location = new System.Drawing.Point(532, 383);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(215, 382);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 28;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Image = global::GUI_for_Arduino.Properties.Resources.logobeyaz;
+            this.pictureBox6.Location = new System.Drawing.Point(1010, 16);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(220, 134);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 18;
+            this.pictureBox6.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -926,10 +927,10 @@
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

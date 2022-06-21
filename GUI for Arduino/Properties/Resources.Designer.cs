@@ -73,9 +73,29 @@ namespace GUI_for_Arduino.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arabatepeden {
+            get {
+                object obj = ResourceManager.GetObject("arabatepeden", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap img_7079 {
             get {
                 object obj = ResourceManager.GetObject("img_7079", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logobeyaz {
+            get {
+                object obj = ResourceManager.GetObject("logobeyaz", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
