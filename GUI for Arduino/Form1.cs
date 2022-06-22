@@ -34,8 +34,9 @@ namespace GUI_for_Arduino
         uint battery_heat;
         uint motor_heat;
         uint inverter_heat;
-        uint speed_ = 0; 
+        uint speed_ = 0;
 
+      
         
         public Form1()
         {
@@ -60,15 +61,52 @@ namespace GUI_for_Arduino
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(SeriPortCom_DataReceived);
             serialPort1.PortName = "COM3";
 
-            //chart
+            //progress
             timer1.Enabled = true;
             timer1.Interval = 50;
+            //Gauge
+            timer2.Enabled = true;
+            timer2.Interval = 5;
+            
 
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart2.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart3.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart4.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart4.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
+
+        }
+        void clear()
+        {
+
+            time_stamp = ' ';
+            motor_rpm = 0;
+            vsm = 0;
+            internal_faults = 0;
+            battery_percentage = 0;
+            battery_voltage = 0;
+            battery_current = 0;
+            battery_heat = 0;
+            motor_heat = 0;
+            inverter_heat = 0 ;
+            speed_ = 0;
+
+        }
+
+       
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            //speed gauge
+            gauge1.Value = gauge1.Value + ((int)speed_ - gauge1.Value) / 25;
+            //battery percantage gauge
+            gauge2.Value = gauge2.Value + ((int)battery_percentage - gauge1.Value) / 25; ;
+
+            //power gauge
+            gauge3.Value = 0;
+
+            //battery heat gauge
+            gauge4.Value = gauge4.Value + ((int)battery_heat - gauge1.Value) / 25; ;
 
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -83,6 +121,7 @@ namespace GUI_for_Arduino
             chart1.ChartAreas[0].AxisX.Maximum = time;
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
             chart1.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
+
 
             // chart 2
             chart2.Series[0].Points.AddXY(time, 3 * Math.Sin(5 + time) + 5 * Math.Cos(3 + time));
@@ -107,6 +146,9 @@ namespace GUI_for_Arduino
             chart3.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
             chart3.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
 
+                // remove gridline y
+            chart3.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+
             // chart 4
             chart4.Series[0].Points.AddXY(time, (double)speed_);
 
@@ -120,15 +162,19 @@ namespace GUI_for_Arduino
             chart4.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
             chart4.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
 
+                // remove gridlines
+            chart4.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chart4.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+
             //speed
-            gauge1.Value = (int)speed_;
+
             label13.Text = " " + speed_.ToString() + " km/h";
             //battery percentage
-            gauge2.Value = (int)battery_percentage;
+            
             label4.Text =  "%" + battery_percentage.ToString();
             //battery heat
             label7.Text = battery_heat.ToString() + " °C";
-            gauge4.Value = (int)battery_heat;
+            
             //battery voltage
             textBox2.Text = battery_voltage.ToString() + " V";
             //battery current
@@ -142,7 +188,7 @@ namespace GUI_for_Arduino
             //internal fault
             textBox6.Text = internal_faults.ToString();
             //power
-            gauge3.Value = 0;
+            
             label5.Text = "0 kw";
             
             
@@ -369,6 +415,7 @@ namespace GUI_for_Arduino
             {
                 Console.WriteLine("Connection is over..");
                 serialPort1.Close();
+                clear();
 
                 richTextBox1.Invoke(new EventHandler(delegate
                 {
@@ -384,41 +431,6 @@ namespace GUI_for_Arduino
                 Console.WriteLine("Connection already closed");
             }
 
-
-            //img = Image.FromFile(@"D:\Racing\GUI\GUI for Arduino\GUI for Arduino\imgs\ibre.png");
-
-            ////Bitmap bitmap = new Bitmap(pictureBox1.Width,pictureBox1.Height);
-
-            ////Graphics gfx = Graphics.FromImage(bitmap);
-
-            ////gfx.TranslateTransform(bitmap.Width / 2, bitmap.Height / 2);
-            //////gfx.RotateTransform(100);
-            ////gfx.DrawImage(img, 0, 0);
-
-
-
-            //Bitmap bmp = new Bitmap(img);
-
-            //// whatever your plans where, we don't know ;-)
-            //// RectangleF rectf = new RectangleF(640F, 1100F, 0, 0);
-
-            //Graphics g = Graphics.FromImage(bmp);
-            //g.TranslateTransform(img.Width, img.Height);
-
-            //// DrawImage needs an image, not a string
-            //g.RotateTransform(150);
-            //g.DrawImage(new Bitmap(img), new Point(0, 0));
-
-
-            //// flush is for finishing write operations
-            //// dispose is the command to get rid of GDI elements:
-            //g.Dispose();
-
-            //pictureBox1.Image = bmp;
-
-
-
-
         }
 
 
@@ -428,60 +440,11 @@ namespace GUI_for_Arduino
             
         }
 
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void circularProgressBar2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chart2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void elementHost1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void chart2_Click_1(object sender, EventArgs e)
         {
@@ -493,25 +456,14 @@ namespace GUI_for_Arduino
 
         }
 
-        private void circularProgressBar2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void gauge2_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -548,14 +500,9 @@ namespace GUI_for_Arduino
 
         }
 
-        private void elementHost1_ChildChanged_1(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        private void label17_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-            progressBar1
         }
     }
 }

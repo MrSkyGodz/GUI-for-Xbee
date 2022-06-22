@@ -88,6 +88,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -838,9 +839,10 @@
             this.label17.ForeColor = System.Drawing.Color.DarkOrange;
             this.label17.Location = new System.Drawing.Point(227, 522);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(135, 24);
+            this.label17.Size = new System.Drawing.Size(149, 24);
             this.label17.TabIndex = 29;
-            this.label17.Text = "REAR DAMPER";
+            this.label17.Text = "FRONT DAMPER";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label18
             // 
@@ -849,9 +851,9 @@
             this.label18.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label18.Location = new System.Drawing.Point(222, 695);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(149, 24);
+            this.label18.Size = new System.Drawing.Size(135, 24);
             this.label18.TabIndex = 30;
-            this.label18.Text = "FRONT DAMPER";
+            this.label18.Text = "REAR DAMPER";
             // 
             // pictureBox1
             // 
@@ -875,6 +877,10 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 18;
             this.pictureBox6.TabStop = false;
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
@@ -984,6 +990,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
