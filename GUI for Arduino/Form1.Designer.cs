@@ -89,6 +89,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -122,7 +123,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
-            this.comboBox1.Text = "COM3";
+            this.comboBox1.Text = "COM4";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // richTextBox1
@@ -270,7 +271,7 @@
             series1.Name = "Series1";
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(405, 131);
+            this.chart1.Size = new System.Drawing.Size(405, 148);
             this.chart1.TabIndex = 17;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click_1);
@@ -285,7 +286,7 @@
             legend2.Name = "Legend1";
             legend2.TextWrapThreshold = 10;
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(92, 554);
+            this.chart2.Location = new System.Drawing.Point(92, 571);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart2.PaletteCustomColors = new System.Drawing.Color[] {
@@ -297,7 +298,7 @@
             series2.Name = "Series1";
             series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(405, 131);
+            this.chart2.Size = new System.Drawing.Size(405, 148);
             this.chart2.TabIndex = 17;
             this.chart2.Text = "chart2";
             this.chart2.Click += new System.EventHandler(this.chart2_Click_1);
@@ -778,7 +779,7 @@
             series3.Name = "Series1";
             series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(389, 131);
+            this.chart3.Size = new System.Drawing.Size(389, 148);
             this.chart3.TabIndex = 17;
             this.chart3.Text = "chart1";
             this.chart3.Click += new System.EventHandler(this.chart1_Click_1);
@@ -793,7 +794,7 @@
             legend4.Name = "Legend1";
             legend4.TextWrapThreshold = 10;
             this.chart4.Legends.Add(legend4);
-            this.chart4.Location = new System.Drawing.Point(781, 554);
+            this.chart4.Location = new System.Drawing.Point(781, 571);
             this.chart4.Name = "chart4";
             this.chart4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart4.PaletteCustomColors = new System.Drawing.Color[] {
@@ -804,7 +805,7 @@
             series4.Name = "Series1";
             series4.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chart4.Series.Add(series4);
-            this.chart4.Size = new System.Drawing.Size(389, 131);
+            this.chart4.Size = new System.Drawing.Size(389, 148);
             this.chart4.TabIndex = 17;
             this.chart4.Text = "chart2";
             this.chart4.Click += new System.EventHandler(this.chart2_Click_1);
@@ -814,7 +815,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label6.Location = new System.Drawing.Point(903, 522);
+            this.label6.Location = new System.Drawing.Point(901, 534);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(144, 24);
             this.label6.TabIndex = 24;
@@ -826,7 +827,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label16.Location = new System.Drawing.Point(925, 695);
+            this.label16.Location = new System.Drawing.Point(924, 728);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(99, 24);
             this.label16.TabIndex = 24;
@@ -837,7 +838,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label17.Location = new System.Drawing.Point(227, 522);
+            this.label17.Location = new System.Drawing.Point(227, 534);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(149, 24);
             this.label17.TabIndex = 29;
@@ -849,7 +850,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label18.Location = new System.Drawing.Point(222, 695);
+            this.label18.Location = new System.Drawing.Point(227, 728);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(135, 24);
             this.label18.TabIndex = 30;
@@ -860,9 +861,9 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::GUI_for_Arduino.Properties.Resources.arabatepeden;
-            this.pictureBox1.Location = new System.Drawing.Point(532, 383);
+            this.pictureBox1.Location = new System.Drawing.Point(510, 298);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(215, 382);
+            this.pictureBox1.Size = new System.Drawing.Size(258, 467);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
@@ -882,6 +883,18 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Trebuchet MS", 6F, System.Drawing.FontStyle.Italic);
+            this.label19.ForeColor = System.Drawing.Color.Snow;
+            this.label19.Location = new System.Drawing.Point(1149, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(87, 13);
+            this.label19.TabIndex = 31;
+            this.label19.Text = "DT BEELECTRIC-02 GUI";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -889,10 +902,10 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.ClientSize = new System.Drawing.Size(1264, 761);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.chart3);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.gauge4);
@@ -916,6 +929,7 @@
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.gauge2);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -991,6 +1005,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label label19;
     }
 }
 

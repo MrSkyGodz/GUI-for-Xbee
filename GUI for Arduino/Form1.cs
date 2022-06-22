@@ -24,17 +24,17 @@ namespace GUI_for_Arduino
         Random random = new Random();
 
 
-        char time_stamp;
-        uint motor_rpm;
-        uint vsm;
-        uint internal_faults;
-        uint battery_percentage;
-        uint battery_voltage;
-        uint battery_current;
-        uint battery_heat;
-        uint motor_heat;
-        uint inverter_heat;
-        uint speed_ = 0;
+        int time_stamp;
+        int motor_rpm;
+        int vsm;
+        int internal_faults;
+        int battery_percentage;
+        int battery_voltage;
+        int battery_current;
+        int battery_heat;
+        int motor_heat;
+        int inverter_heat;
+        int speed_ = 0;
 
       
         
@@ -59,14 +59,14 @@ namespace GUI_for_Arduino
             
             //Event handler for serial port
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(SeriPortCom_DataReceived);
-            serialPort1.PortName = "COM3";
+            serialPort1.PortName = "COM4";
 
             //progress
             timer1.Enabled = true;
             timer1.Interval = 50;
             //Gauge
             timer2.Enabled = true;
-            timer2.Interval = 5;
+            timer2.Interval = 10;
             
 
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -98,15 +98,16 @@ namespace GUI_for_Arduino
         private void timer2_Tick(object sender, EventArgs e)
         {
             //speed gauge
-            gauge1.Value = gauge1.Value + ((int)speed_ - gauge1.Value) / 25;
+            gauge1.Value = gauge1.Value + (speed_ - gauge1.Value) / 50;
             //battery percantage gauge
-            gauge2.Value = gauge2.Value + ((int)battery_percentage - gauge1.Value) / 25; ;
+            gauge2.Value = gauge2.Value + (battery_percentage - gauge2.Value) /50; ;
+      
 
             //power gauge
             gauge3.Value = 0;
 
             //battery heat gauge
-            gauge4.Value = gauge4.Value + ((int)battery_heat - gauge1.Value) / 25; ;
+            gauge4.Value = gauge4.Value + ((int)battery_heat - gauge4.Value) / 50; ;
 
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -156,7 +157,7 @@ namespace GUI_for_Arduino
                 chart4.Series[0].Points.RemoveAt(0);
 
             chart4.ChartAreas[0].AxisY.Minimum = 0;
-            chart4.ChartAreas[0].AxisY.Maximum = 200;
+            chart4.ChartAreas[0].AxisY.Maximum = 120;
             chart4.ChartAreas[0].AxisX.Minimum = chart4.Series[0].Points[0].XValue;
             chart4.ChartAreas[0].AxisX.Maximum = time;
             chart4.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
@@ -225,78 +226,82 @@ namespace GUI_for_Arduino
             Console.WriteLine("Selected");
         }
 
+        int trans(int x)
+        {
+
+            int t = 0;
+            for (int i = x + 3; i >= x; i--)
+            {
+                t = t << 8;
+                t = t | bytes_received[i];
+            }
+            return t;
+        
+        
+        }
         private void SeriPortCom_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             try
             {
                 Console.WriteLine("Success");
 
-                serialPort1.Read(bytes_received, 0, 21);
-                uint t = 0;
+                serialPort1.Read(bytes_received, 0, 43);
+                
 
-                time_stamp = (char)0;
+                time_stamp = trans(0);
 
                 Console.WriteLine(time_stamp);
-                
-                time_stamp = Convert.ToChar(bytes_received[0]);
 
-                Console.WriteLine(bytes_received.ToString());
+                Console.WriteLine(bytes_received[0]);
 
-                if (time_stamp == '$')
+                if (time_stamp == -1)
                 {
-                    t = 0;
-                    motor_rpm = 0;
-                    t = t | bytes_received[2];
-                    t = t << 8;
-                    motor_rpm = t | bytes_received[1];
+
+                    motor_rpm = trans(4);
                     Console.WriteLine(motor_rpm);
                     //circularProgressBar1.Value = (int)motor_rpm;
 
 
-                    vsm = 0;
-                    vsm = bytes_received[3];
+                    
+                    vsm = trans(8);
                     Console.WriteLine(vsm);
 
-                    internal_faults = 0;
-                    internal_faults = bytes_received[4];
+                    
+                    internal_faults = trans(12);
                     Console.WriteLine(internal_faults);
 
-                    battery_percentage = 0;
-                    battery_percentage = bytes_received[5];
+                    
+                    battery_percentage = trans(16);
                     Console.WriteLine(battery_percentage);
 
-                    t = 0;
-                    battery_voltage = 0;
-                    t = t | bytes_received[7];
-                    t = t << 8;
-                    battery_voltage = t | bytes_received[6];
+                   
+                    battery_voltage = trans(20);
                     Console.WriteLine(battery_voltage);
 
-                    battery_current = 0;
-                    battery_current = bytes_received[8];
+
+                    
+                    battery_current = trans(24);
                     Console.WriteLine(battery_current);
 
-                    battery_heat = 0;
-                    battery_heat = bytes_received[9];
+
+                    battery_heat = trans(28);
                     Console.WriteLine(battery_heat);
 
 
-                    motor_heat = 0;
-                    motor_heat = bytes_received[10];
+
+                    motor_heat = trans(32);
                     Console.WriteLine(motor_heat);
 
-                    inverter_heat = 0;
-                    inverter_heat = bytes_received[11];
+                    
+                    inverter_heat = trans(36);
                     Console.WriteLine(inverter_heat);
 
-                    speed_ = 0;
-                    speed_ = bytes_received[12];
+                    
+                    speed_ = trans(40);
                     Console.WriteLine(speed_);
                     
 
-                    char fault_message = (char)0;
-                    fault_message = (char)bytes_received[13];
-                    Console.WriteLine(fault_message);
+                  
 
 
                     
@@ -306,6 +311,7 @@ namespace GUI_for_Arduino
 
                     richTextBox1.Invoke(new EventHandler(delegate
                     {
+
                         richTextBox1.AppendText(time_stamp + "  ");
                         richTextBox1.AppendText(motor_rpm.ToString() + " ");
                         richTextBox1.AppendText(vsm.ToString() + " ");
@@ -313,10 +319,11 @@ namespace GUI_for_Arduino
                         richTextBox1.AppendText(battery_percentage.ToString() + " ");
                         richTextBox1.AppendText(battery_voltage.ToString() + " ");
                         richTextBox1.AppendText(battery_current.ToString() + " ");
+                        richTextBox1.AppendText(battery_heat.ToString() + " ");
                         richTextBox1.AppendText(motor_heat.ToString() + " ");
                         richTextBox1.AppendText(inverter_heat.ToString() + " ");
-                        richTextBox1.AppendText(speed_.ToString() + " ");
-                        richTextBox1.AppendText(fault_message.ToString() + "\n");
+                        richTextBox1.AppendText(speed_.ToString() + "\n");
+                        //richTextBox1.AppendText(fault_message.ToString() + "\n");
 
 
                     }));
@@ -501,6 +508,11 @@ namespace GUI_for_Arduino
         }
 
         private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
         {
 
         }
