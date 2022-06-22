@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 
 
@@ -36,8 +37,8 @@ namespace GUI_for_Arduino
         int inverter_heat;
         int speed_ = 0;
 
-      
-        
+
+
         public Form1()
         {
             InitializeComponent();
@@ -56,7 +57,7 @@ namespace GUI_for_Arduino
             comboBox2.Items.Add(115200);
             //Ports
             refresh_ports();
-            
+
             //Event handler for serial port
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(SeriPortCom_DataReceived);
             serialPort1.PortName = "COM4";
@@ -67,7 +68,7 @@ namespace GUI_for_Arduino
             //Gauge
             timer2.Enabled = true;
             timer2.Interval = 10;
-            
+
 
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart2.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -89,19 +90,19 @@ namespace GUI_for_Arduino
             battery_current = 0;
             battery_heat = 0;
             motor_heat = 0;
-            inverter_heat = 0 ;
+            inverter_heat = 0;
             speed_ = 0;
 
         }
 
-       
+
         private void timer2_Tick(object sender, EventArgs e)
         {
             //speed gauge
             gauge1.Value = gauge1.Value + (speed_ - gauge1.Value) / 50;
             //battery percantage gauge
-            gauge2.Value = gauge2.Value + (battery_percentage - gauge2.Value) /50; ;
-      
+            gauge2.Value = gauge2.Value + (battery_percentage - gauge2.Value) / 50; ;
+
 
             //power gauge
             gauge3.Value = 0;
@@ -147,7 +148,7 @@ namespace GUI_for_Arduino
             chart3.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
             chart3.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
 
-                // remove gridline y
+            // remove gridline y
             chart3.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
 
             // chart 4
@@ -163,7 +164,7 @@ namespace GUI_for_Arduino
             chart4.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
             chart4.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
 
-                // remove gridlines
+            // remove gridlines
             chart4.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
             chart4.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
 
@@ -171,11 +172,11 @@ namespace GUI_for_Arduino
 
             label13.Text = " " + speed_.ToString() + " km/h";
             //battery percentage
-            
-            label4.Text =  "%" + battery_percentage.ToString();
+
+            label4.Text = "%" + battery_percentage.ToString();
             //battery heat
             label7.Text = battery_heat.ToString() + " °C";
-            
+
             //battery voltage
             textBox2.Text = battery_voltage.ToString() + " V";
             //battery current
@@ -189,10 +190,10 @@ namespace GUI_for_Arduino
             //internal fault
             textBox6.Text = internal_faults.ToString();
             //power
-            
+
             label5.Text = "0 kw";
-            
-            
+
+
 
 
             time += 0.1;
@@ -209,12 +210,12 @@ namespace GUI_for_Arduino
             foreach (string port in ports)
             {
                 comboBox1.Items.Add(port);
-            
+
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             Console.WriteLine("Refreshed");
             refresh_ports();
 
@@ -236,9 +237,11 @@ namespace GUI_for_Arduino
                 t = t | bytes_received[i];
             }
             return t;
-        
-        
+
+
         }
+        
+
         private void SeriPortCom_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             try
