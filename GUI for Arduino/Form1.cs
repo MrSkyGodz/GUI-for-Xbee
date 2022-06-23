@@ -24,7 +24,8 @@ namespace GUI_for_Arduino
         Timer myTimer = new Timer();
         Random random = new Random();
 
-
+        float timer, timenow;
+        int dataCount;
         int time_stamp;
         int motor_rpm;
         int vsm;
@@ -46,6 +47,9 @@ namespace GUI_for_Arduino
         }
         void Init()
         {
+            // data count and time reset
+            dataCount = 0;
+            timer = (float)DateTime.Now.Millisecond / 1000 + (float)DateTime.Now.Second;
             //image box
             Image formula_img = pictureBox6.Image;
             //formula_img.RotateFlip(RotateFlipType.Rotate270FlipX);
@@ -95,20 +99,30 @@ namespace GUI_for_Arduino
 
         }
 
+        
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            /* 
+             * GAUGE VALUES
+             */
+            
             //speed gauge
-            gauge1.Value = gauge1.Value + (speed_ - gauge1.Value) / 50;
+            if(speed_ < 200)
+                gauge1.Value = gauge1.Value + (speed_ - gauge1.Value) / 25;
+            
             //battery percantage gauge
-            gauge2.Value = gauge2.Value + (battery_percentage - gauge2.Value) / 50; ;
-
+            if(battery_percentage < 200)
+                gauge2.Value = gauge2.Value + (battery_percentage - gauge2.Value) / 50; ;
 
             //power gauge
-            gauge3.Value = 0;
+            int _kw = (battery_voltage * battery_current);
+            gauge3.Value = gauge3.Value + (_kw - gauge3.Value) / 50;
+
 
             //battery heat gauge
-            gauge4.Value = gauge4.Value + ((int)battery_heat - gauge4.Value) / 50; ;
+            if (battery_heat < 200)
+                gauge4.Value = gauge4.Value + ((int)battery_heat - gauge4.Value) / 50; ;
 
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -187,14 +201,48 @@ namespace GUI_for_Arduino
             textBox4.Text = inverter_heat.ToString() + " °C";
             //VSM
             textBox5.Text = vsm.ToString();
+            //kw
+            label5.Text = ((float)(battery_voltage * battery_current)/1000).ToString() + " Kw";
+
+
+            switch (vsm.ToString())
+            {
+                case "0":
+                    textBox7.BackColor = Color.White;
+                    break;
+                case "4":
+                    textBox7.BackColor = Color.Blue;
+                    break;
+                case "5":
+                    textBox7.BackColor = Color.Yellow;
+                    break;
+                case "6":
+                    textBox7.BackColor = Color.Green;
+                    break;
+                case "7":
+                    textBox7.BackColor = Color.Red;
+                    break;
+                default:
+                    textBox7.BackColor = Color.White;
+                    break;
+            }
             //internal fault
             textBox6.Text = internal_faults.ToString();
-            //power
 
-            label5.Text = "0 kw";
+            // data count
+            textBox8.Text = dataCount.ToString();
 
+            // data timer
+            timenow = (float)DateTime.Now.Millisecond / 1000 + (float)DateTime.Now.Second;
+            textBox9.Text = (timenow - timer).ToString();
 
-
+            // data timer visualizer
+            
+            
+            if(dataCount % 2 == 1)
+                textBox10.BackColor = Color.Blue;
+            else
+                textBox10.BackColor = Color.Green;
 
             time += 0.1;
         }
@@ -248,7 +296,7 @@ namespace GUI_for_Arduino
             {
                 Console.WriteLine("Success");
 
-                serialPort1.Read(bytes_received, 0, 43);
+                serialPort1.Read(bytes_received, 0, 47);
                 
 
                 time_stamp = trans(0);
@@ -259,7 +307,8 @@ namespace GUI_for_Arduino
 
                 if (time_stamp == -1)
                 {
-
+                    dataCount++;
+                    timer = (float)DateTime.Now.Millisecond / 1000 + (float)DateTime.Now.Second;
                     motor_rpm = trans(4);
                     Console.WriteLine(motor_rpm);
                     //circularProgressBar1.Value = (int)motor_rpm;
@@ -516,6 +565,16 @@ namespace GUI_for_Arduino
         }
 
         private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

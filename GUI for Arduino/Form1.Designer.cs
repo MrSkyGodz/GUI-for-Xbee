@@ -53,6 +53,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -66,6 +71,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -76,10 +82,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.gauge4 = new GaugeControl.Gauge();
-            this.gauge1 = new GaugeControl.Gauge();
-            this.gauge3 = new GaugeControl.Gauge();
-            this.gauge2 = new GaugeControl.Gauge();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label6 = new System.Windows.Forms.Label();
@@ -90,6 +92,11 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.label19 = new System.Windows.Forms.Label();
+            this.gauge4 = new GaugeControl.Gauge();
+            this.gauge1 = new GaugeControl.Gauge();
+            this.gauge3 = new GaugeControl.Gauge();
+            this.gauge2 = new GaugeControl.Gauge();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -128,11 +135,11 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            this.richTextBox1.BackColor = System.Drawing.Color.White;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(26, 103);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 72);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(360, 35);
+            this.richTextBox1.Size = new System.Drawing.Size(699, 193);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -197,15 +204,69 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.richTextBox1);
+            this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.textBox10);
+            this.panel1.Controls.Add(this.textBox9);
+            this.panel1.Controls.Add(this.textBox8);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Location = new System.Drawing.Point(26, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 612);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(360, 80);
+            this.panel1.Size = new System.Drawing.Size(707, 272);
             this.panel1.TabIndex = 10;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label21.Location = new System.Drawing.Point(485, 25);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(82, 13);
+            this.label21.TabIndex = 34;
+            this.label21.Text = "Seconds Ago";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label20.Location = new System.Drawing.Point(374, 24);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(94, 13);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "Total Received";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
+            // 
+            // textBox10
+            // 
+            this.textBox10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Location = new System.Drawing.Point(606, 14);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(81, 49);
+            this.textBox10.TabIndex = 34;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(488, 41);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.TabIndex = 7;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(377, 41);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 20);
+            this.textBox8.TabIndex = 6;
             // 
             // button3
             // 
@@ -225,7 +286,7 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Location = new System.Drawing.Point(26, 154);
+            this.panel3.Location = new System.Drawing.Point(23, 30);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(268, 65);
             this.panel3.TabIndex = 13;
@@ -234,10 +295,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.label7.BackColor = System.Drawing.Color.Black;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.ForeColor = System.Drawing.SystemColors.Window;
-            this.label7.Location = new System.Drawing.Point(1081, 316);
+            this.label7.Location = new System.Drawing.Point(127, 456);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 25);
             this.label7.TabIndex = 10;
@@ -259,7 +320,7 @@
             legend1.Name = "Legend1";
             legend1.TextWrapThreshold = 10;
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(92, 383);
+            this.chart1.Location = new System.Drawing.Point(769, 461);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart1.PaletteCustomColors = new System.Drawing.Color[] {
@@ -286,7 +347,7 @@
             legend2.Name = "Legend1";
             legend2.TextWrapThreshold = 10;
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(92, 571);
+            this.chart2.Location = new System.Drawing.Point(769, 649);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart2.PaletteCustomColors = new System.Drawing.Color[] {
@@ -311,7 +372,7 @@
             this.panel7.Controls.Add(this.label9);
             this.panel7.Controls.Add(this.textBox3);
             this.panel7.Controls.Add(this.textBox4);
-            this.panel7.Location = new System.Drawing.Point(26, 226);
+            this.panel7.Location = new System.Drawing.Point(23, 102);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(268, 65);
             this.panel7.TabIndex = 13;
@@ -359,10 +420,11 @@
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.label10);
+            this.panel8.Controls.Add(this.textBox7);
             this.panel8.Controls.Add(this.label11);
             this.panel8.Controls.Add(this.textBox5);
             this.panel8.Controls.Add(this.textBox6);
-            this.panel8.Location = new System.Drawing.Point(26, 298);
+            this.panel8.Location = new System.Drawing.Point(23, 174);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(268, 65);
             this.panel8.TabIndex = 13;
@@ -379,6 +441,16 @@
             this.label10.TabIndex = 5;
             this.label10.Text = "VSM";
             this.label10.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Location = new System.Drawing.Point(59, 8);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(53, 20);
+            this.textBox7.TabIndex = 32;
             // 
             // label11
             // 
@@ -411,7 +483,7 @@
             this.label13.BackColor = System.Drawing.Color.Black;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.7F);
             this.label13.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label13.Location = new System.Drawing.Point(591, 315);
+            this.label13.Location = new System.Drawing.Point(591, 333);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 25);
             this.label13.TabIndex = 12;
@@ -424,8 +496,8 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.7F);
-            this.label4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label4.Location = new System.Drawing.Point(423, 246);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(423, 264);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 25);
             this.label4.TabIndex = 21;
@@ -438,8 +510,8 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.7F);
-            this.label5.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label5.Location = new System.Drawing.Point(785, 253);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(785, 271);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 25);
             this.label5.TabIndex = 22;
@@ -452,7 +524,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.LightGreen;
-            this.label12.Location = new System.Drawing.Point(449, 16);
+            this.label12.Location = new System.Drawing.Point(449, 34);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 24);
             this.label12.TabIndex = 23;
@@ -464,7 +536,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label14.Location = new System.Drawing.Point(592, 37);
+            this.label14.Location = new System.Drawing.Point(592, 55);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(99, 24);
             this.label14.TabIndex = 24;
@@ -475,7 +547,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label15.Location = new System.Drawing.Point(736, 24);
+            this.label15.Location = new System.Drawing.Point(736, 42);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(74, 24);
             this.label15.TabIndex = 25;
@@ -484,31 +556,169 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Black;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label8.Location = new System.Drawing.Point(1043, 286);
+            this.label8.Location = new System.Drawing.Point(89, 426);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(144, 24);
             this.label8.TabIndex = 27;
             this.label8.Text = "BATTERY TEMP";
             this.label8.Click += new System.EventHandler(this.label8_Click_1);
             // 
+            // chart3
+            // 
+            this.chart3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            chartArea3.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea3);
+            legend3.Enabled = false;
+            legend3.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
+            legend3.Name = "Legend1";
+            legend3.TextWrapThreshold = 10;
+            this.chart3.Legends.Add(legend3);
+            this.chart3.Location = new System.Drawing.Point(1491, 469);
+            this.chart3.Name = "chart3";
+            this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chart3.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.DarkOrange};
+            series3.ChartArea = "ChartArea1";
+            series3.LabelFormat = "2";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.chart3.Series.Add(series3);
+            this.chart3.Size = new System.Drawing.Size(389, 148);
+            this.chart3.TabIndex = 17;
+            this.chart3.Text = "chart1";
+            this.chart3.Click += new System.EventHandler(this.chart1_Click_1);
+            // 
+            // chart4
+            // 
+            this.chart4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            chartArea4.Name = "ChartArea1";
+            this.chart4.ChartAreas.Add(chartArea4);
+            legend4.Enabled = false;
+            legend4.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
+            legend4.Name = "Legend1";
+            legend4.TextWrapThreshold = 10;
+            this.chart4.Legends.Add(legend4);
+            this.chart4.Location = new System.Drawing.Point(1491, 657);
+            this.chart4.Name = "chart4";
+            this.chart4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chart4.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.DeepSkyBlue};
+            series4.ChartArea = "ChartArea1";
+            series4.LabelFormat = "2";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.chart4.Series.Add(series4);
+            this.chart4.Size = new System.Drawing.Size(389, 148);
+            this.chart4.TabIndex = 17;
+            this.chart4.Text = "chart2";
+            this.chart4.Click += new System.EventHandler(this.chart2_Click_1);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(1611, 620);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(144, 24);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "BATTERY TEMP";
+            this.label6.Click += new System.EventHandler(this.label6_Click_1);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.Control;
+            this.label16.Location = new System.Drawing.Point(1629, 814);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(99, 24);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "VELOCITY";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label17.Location = new System.Drawing.Point(904, 612);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(149, 24);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "FRONT DAMPER";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.Control;
+            this.label18.Location = new System.Drawing.Point(899, 806);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(135, 24);
+            this.label18.TabIndex = 30;
+            this.label18.Text = "REAR DAMPER";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::GUI_for_Arduino.Properties.Resources.arabatepeden;
+            this.pictureBox1.Location = new System.Drawing.Point(1084, -94);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(494, 1250);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 28;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Image = global::GUI_for_Arduino.Properties.Resources.logobeyaz;
+            this.pictureBox6.Location = new System.Drawing.Point(1626, 25);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(266, 158);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 18;
+            this.pictureBox6.TabStop = false;
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Italic);
+            this.label19.ForeColor = System.Drawing.Color.Snow;
+            this.label19.Location = new System.Drawing.Point(1720, 4);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(172, 22);
+            this.label19.TabIndex = 31;
+            this.label19.Text = "DT BEELECTRIC-02 GUI";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
+            // 
             // gauge4
             // 
             this.gauge4.ArcColor = System.Drawing.Color.DarkOrange;
             this.gauge4.ArcEndAngle = 330F;
-            this.gauge4.ArcRadius = 95F;
+            this.gauge4.ArcRadius = 90F;
             this.gauge4.ArcStartAngle = 210F;
             this.gauge4.ArcWidth = 2F;
-            this.gauge4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.gauge4.BackGroundEllipseColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.gauge4.BackColor = System.Drawing.Color.Black;
+            this.gauge4.BackGroundEllipseColor = System.Drawing.Color.Black;
             this.gauge4.BorderColor = System.Drawing.Color.Black;
-            this.gauge4.BorderEnabled = false;
+            this.gauge4.BorderEnabled = true;
             this.gauge4.BorderWidth = 4F;
             this.gauge4.ForeColor = System.Drawing.Color.Transparent;
             this.gauge4.isArcEnabled = true;
             this.gauge4.isCustomNeedleEnabled = false;
-            this.gauge4.Location = new System.Drawing.Point(986, 154);
+            this.gauge4.Location = new System.Drawing.Point(32, 294);
             this.gauge4.MaxValue = new decimal(new int[] {
             1000,
             0,
@@ -524,7 +734,7 @@
             this.gauge4.NeedleCenterRadius = 7F;
             this.gauge4.NeedleColor = System.Drawing.Color.Red;
             this.gauge4.NeedleImage = null;
-            this.gauge4.NeedleSize = new System.Drawing.Size(2, 85);
+            this.gauge4.NeedleSize = new System.Drawing.Size(2, 105);
             this.gauge4.NumberMarkerAngleBegin = 210F;
             this.gauge4.NumberMarkerAngleEnd = 330F;
             this.gauge4.NumberMarkerAngleInterval = 30F;
@@ -574,7 +784,7 @@
             this.gauge1.ForeColor = System.Drawing.Color.Transparent;
             this.gauge1.isArcEnabled = true;
             this.gauge1.isCustomNeedleEnabled = false;
-            this.gauge1.Location = new System.Drawing.Point(488, 64);
+            this.gauge1.Location = new System.Drawing.Point(488, 82);
             this.gauge1.MaxValue = new decimal(new int[] {
             1000,
             0,
@@ -640,7 +850,7 @@
             this.gauge3.ForeColor = System.Drawing.Color.Transparent;
             this.gauge3.isArcEnabled = true;
             this.gauge3.isCustomNeedleEnabled = false;
-            this.gauge3.Location = new System.Drawing.Point(679, 51);
+            this.gauge3.Location = new System.Drawing.Point(679, 69);
             this.gauge3.MaxValue = new decimal(new int[] {
             1000,
             0,
@@ -659,7 +869,7 @@
             this.gauge3.NeedleSize = new System.Drawing.Size(2, 80);
             this.gauge3.NumberMarkerAngleBegin = 240F;
             this.gauge3.NumberMarkerAngleEnd = 420F;
-            this.gauge3.NumberMarkerAngleInterval = 18F;
+            this.gauge3.NumberMarkerAngleInterval = 20F;
             this.gauge3.NumberMarkerColor = System.Drawing.Color.White;
             this.gauge3.NumberMarkerFont = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Bold);
             this.gauge3.NumberMarkerHeight = new decimal(new int[] {
@@ -667,14 +877,14 @@
             0,
             0,
             0});
-            this.gauge3.NumberMarkerOffset = 15;
+            this.gauge3.NumberMarkerOffset = 17;
             this.gauge3.NumberMarkerValueBegin = new decimal(new int[] {
             0,
             0,
             0,
             0});
             this.gauge3.NumberMarkerValueInterval = new decimal(new int[] {
-            10,
+            1000,
             0,
             0,
             0});
@@ -706,7 +916,7 @@
             this.gauge2.ForeColor = System.Drawing.Color.Transparent;
             this.gauge2.isArcEnabled = true;
             this.gauge2.isCustomNeedleEnabled = false;
-            this.gauge2.Location = new System.Drawing.Point(401, 43);
+            this.gauge2.Location = new System.Drawing.Point(401, 61);
             this.gauge2.MaxValue = new decimal(new int[] {
             1000,
             0,
@@ -758,150 +968,17 @@
             0});
             this.gauge2.Load += new System.EventHandler(this.gauge2_Load);
             // 
-            // chart3
+            // contextMenuStrip1
             // 
-            this.chart3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
-            chartArea3.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea3);
-            legend3.Enabled = false;
-            legend3.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
-            legend3.Name = "Legend1";
-            legend3.TextWrapThreshold = 10;
-            this.chart3.Legends.Add(legend3);
-            this.chart3.Location = new System.Drawing.Point(781, 383);
-            this.chart3.Name = "chart3";
-            this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.chart3.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.DarkOrange};
-            series3.ChartArea = "ChartArea1";
-            series3.LabelFormat = "2";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(389, 148);
-            this.chart3.TabIndex = 17;
-            this.chart3.Text = "chart1";
-            this.chart3.Click += new System.EventHandler(this.chart1_Click_1);
-            // 
-            // chart4
-            // 
-            this.chart4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
-            chartArea4.Name = "ChartArea1";
-            this.chart4.ChartAreas.Add(chartArea4);
-            legend4.Enabled = false;
-            legend4.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
-            legend4.Name = "Legend1";
-            legend4.TextWrapThreshold = 10;
-            this.chart4.Legends.Add(legend4);
-            this.chart4.Location = new System.Drawing.Point(781, 571);
-            this.chart4.Name = "chart4";
-            this.chart4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.chart4.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.DeepSkyBlue};
-            series4.ChartArea = "ChartArea1";
-            series4.LabelFormat = "2";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chart4.Series.Add(series4);
-            this.chart4.Size = new System.Drawing.Size(389, 148);
-            this.chart4.TabIndex = 17;
-            this.chart4.Text = "chart2";
-            this.chart4.Click += new System.EventHandler(this.chart2_Click_1);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label6.Location = new System.Drawing.Point(901, 534);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(144, 24);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "BATTERY TEMP";
-            this.label6.Click += new System.EventHandler(this.label6_Click_1);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label16.Location = new System.Drawing.Point(924, 728);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(99, 24);
-            this.label16.TabIndex = 24;
-            this.label16.Text = "VELOCITY";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label17.Location = new System.Drawing.Point(227, 534);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(149, 24);
-            this.label17.TabIndex = 29;
-            this.label17.Text = "FRONT DAMPER";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label18.Location = new System.Drawing.Point(227, 728);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(135, 24);
-            this.label18.TabIndex = 30;
-            this.label18.Text = "REAR DAMPER";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::GUI_for_Arduino.Properties.Resources.arabatepeden;
-            this.pictureBox1.Location = new System.Drawing.Point(510, 298);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(258, 467);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 28;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = global::GUI_for_Arduino.Properties.Resources.logobeyaz;
-            this.pictureBox6.Location = new System.Drawing.Point(1010, 16);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(220, 134);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 18;
-            this.pictureBox6.TabStop = false;
-            // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Trebuchet MS", 6F, System.Drawing.FontStyle.Italic);
-            this.label19.ForeColor = System.Drawing.Color.Snow;
-            this.label19.Location = new System.Drawing.Point(1149, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(87, 13);
-            this.label19.TabIndex = 31;
-            this.label19.Text = "DT BEELECTRIC-02 GUI";
-            this.label19.Click += new System.EventHandler(this.label19_Click);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.ClientSize = new System.Drawing.Size(1264, 761);
+            this.ClientSize = new System.Drawing.Size(1904, 891);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
@@ -923,7 +1000,6 @@
             this.Controls.Add(this.chart4);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
@@ -935,10 +1011,11 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Beelectric-02";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -1006,6 +1083,13 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
     }
 }
 
