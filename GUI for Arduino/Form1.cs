@@ -10,9 +10,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-
-
-
+using System.IO;
 
 namespace GUI_for_Arduino
 {
@@ -37,7 +35,8 @@ namespace GUI_for_Arduino
         int motor_heat;
         int inverter_heat;
         int speed_ = 0;
-
+        
+        bool isLogging;
 
 
         public Form1()
@@ -47,6 +46,8 @@ namespace GUI_for_Arduino
         }
         void Init()
         {
+            isLogging = false;
+            
             // data count and time reset
             dataCount = 0;
             timer = (float)DateTime.Now.Millisecond / 1000 + (float)DateTime.Now.Second;
@@ -121,6 +122,7 @@ namespace GUI_for_Arduino
 
 
             //battery heat gauge
+            battery_heat = inverter_heat; // gecici
             if (battery_heat < 200)
                 gauge4.Value = gauge4.Value + ((int)battery_heat - gauge4.Value) / 50; ;
 
@@ -240,9 +242,22 @@ namespace GUI_for_Arduino
             
             
             if(dataCount % 2 == 1)
-                textBox10.BackColor = Color.Blue;
+                textBox10.BackColor = Color.LightGreen;
             else
-                textBox10.BackColor = Color.Green;
+                textBox10.BackColor = Color.Yellow;
+
+            // logging
+            if(isLogging)
+            {
+                textBox11.Text = "Logging Started";
+                textBox11.BackColor = Color.Green;
+            }
+            else
+            {
+                textBox11.Text = "Logging Stopped";
+                textBox11.BackColor = Color.Red;
+            }
+            
 
             time += 0.1;
         }
@@ -287,6 +302,28 @@ namespace GUI_for_Arduino
             return t;
 
 
+        }
+
+        private void logger()
+        {
+            if(isLogging)
+            {
+                string path = @"C:\Users\nuke\Desktop" + "\\" + "log" + DateTime.Now.ToString("F") + ".txt";
+                try
+                {
+                    if (!File.Exists(path))
+                    {
+                        File.Create(path);
+                    }
+                    using (StreamWriter sw = File.AppendText(path))
+                    {
+                        sw.WriteLine(DateTime.Now.ToString() + " " + battery_voltage.ToString() + " " + battery_current.ToString() + " " + battery_heat.ToString() + " " + motor_heat.ToString() + " " + inverter_heat.ToString() + " " + speed_.ToString() + " " + battery_percentage.ToString() + " " + vsm.ToString() + " " + internal_faults.ToString());
+                    }
+                }
+                catch{
+                    richTextBox1.AppendText(" Logger Error ");
+                }
+            }
         }
         
 
@@ -351,15 +388,6 @@ namespace GUI_for_Arduino
                     
                     speed_ = trans(40);
                     Console.WriteLine(speed_);
-                    
-
-                  
-
-
-                    
-
-
-
 
                     richTextBox1.Invoke(new EventHandler(delegate
                     {
@@ -379,7 +407,8 @@ namespace GUI_for_Arduino
 
 
                     }));
-                    
+
+                    logger();
                 }
 
                 
@@ -572,6 +601,29 @@ namespace GUI_for_Arduino
         private void label20_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            isLogging = false;
+            button4.Enabled = true;
+            button4.Cursor = Cursors.Hand;
+            button5.Enabled = false;
+            button5.Cursor = Cursors.No;
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            isLogging = true;          
+            button4.Enabled = false;
+            button4.Cursor = Cursors.No;
+            button5.Enabled = true;
+            button5.Cursor = Cursors.Hand;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
