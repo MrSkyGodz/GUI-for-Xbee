@@ -22,6 +22,8 @@ namespace GUI_for_Arduino
         Timer myTimer = new Timer();
         Random random = new Random();
 
+        string file;
+
         float timer, timenow;
         int dataCount;
         int time_stamp;
@@ -308,21 +310,15 @@ namespace GUI_for_Arduino
         {
             if(isLogging)
             {
-                string path = @"C:\Users\nuke\Desktop" + "\\" + "log" + DateTime.Now.ToString("F") + ".txt";
-                try
+                string path = file;
+                Console.WriteLine(path);
+              
+                using (StreamWriter sw = File.AppendText(path))
                 {
-                    if (!File.Exists(path))
-                    {
-                        File.Create(path);
-                    }
-                    using (StreamWriter sw = File.AppendText(path))
-                    {
-                        sw.WriteLine(DateTime.Now.ToString() + " " + battery_voltage.ToString() + " " + battery_current.ToString() + " " + battery_heat.ToString() + " " + motor_heat.ToString() + " " + inverter_heat.ToString() + " " + speed_.ToString() + " " + battery_percentage.ToString() + " " + vsm.ToString() + " " + internal_faults.ToString());
-                    }
+                    sw.WriteLine(DateTime.Now.ToString("dd.mm.yyyy HH.mm.ss.ff") + " " + battery_voltage.ToString() + " " + battery_current.ToString() + " " + battery_heat.ToString() + " " + motor_heat.ToString() + " " + inverter_heat.ToString() + " " + speed_.ToString() + " " + battery_percentage.ToString() + " " + vsm.ToString() + " " + internal_faults.ToString());
                 }
-                catch{
-                    richTextBox1.AppendText(" Logger Error ");
-                }
+            
+                
             }
         }
         
@@ -624,6 +620,24 @@ namespace GUI_for_Arduino
             button4.Cursor = Cursors.No;
             button5.Enabled = true;
             button5.Cursor = Cursors.Hand;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog1.SelectedPath))
+            {
+                file = folderBrowserDialog1.SelectedPath;
+                file = @file + "\\" + "log_" + DateTime.Now.ToString("dd_MMM_yyyy__HH_mm_ss") + ".txt";
+            }
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
