@@ -158,6 +158,7 @@
     <Content Include="imgs\logobeyaz.ico" />
     <Content Include="imgs\logobeyaz.png" />
     <Content Include="imgs\racinglogo.png" />
+    <Content Include="imgs\üst görünüş.png" />
     <Content Include="Resources\racingblack.png" />
   </ItemGroup>
   <ItemGroup>

@@ -88,8 +88,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.label19 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -99,11 +97,13 @@
             this.button6 = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gauge4 = new GaugeControl.Gauge();
             this.gauge1 = new GaugeControl.Gauge();
             this.gauge3 = new GaugeControl.Gauge();
             this.gauge2 = new GaugeControl.Gauge();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -112,9 +112,9 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -583,7 +583,7 @@
             legend3.Name = "Legend1";
             legend3.TextWrapThreshold = 10;
             this.chart3.Legends.Add(legend3);
-            this.chart3.Location = new System.Drawing.Point(1491, 469);
+            this.chart3.Location = new System.Drawing.Point(1491, 461);
             this.chart3.Name = "chart3";
             this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart3.PaletteCustomColors = new System.Drawing.Color[] {
@@ -609,7 +609,7 @@
             legend4.Name = "Legend1";
             legend4.TextWrapThreshold = 10;
             this.chart4.Legends.Add(legend4);
-            this.chart4.Location = new System.Drawing.Point(1491, 657);
+            this.chart4.Location = new System.Drawing.Point(1491, 649);
             this.chart4.Name = "chart4";
             this.chart4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart4.PaletteCustomColors = new System.Drawing.Color[] {
@@ -671,29 +671,6 @@
             this.label18.TabIndex = 30;
             this.label18.Text = "REAR DAMPER";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::GUI_for_Arduino.Properties.Resources.arabatepeden;
-            this.pictureBox1.Location = new System.Drawing.Point(1084, -94);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(494, 1250);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 28;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = global::GUI_for_Arduino.Properties.Resources.logobeyaz;
-            this.pictureBox6.Location = new System.Drawing.Point(1626, 25);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(266, 158);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 18;
-            this.pictureBox6.TabStop = false;
-            // 
             // timer2
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
@@ -752,14 +729,11 @@
             // 
             // button6
             // 
-            this.button6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.25F);
             this.button6.Location = new System.Drawing.Point(11, 13);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(46, 19);
             this.button6.TabIndex = 37;
-            this.button6.Text = "file";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button6.Text = "File";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -785,6 +759,17 @@
             this.label22.TabIndex = 35;
             this.label22.Text = "Logging";
             this.label22.Click += new System.EventHandler(this.label22_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox1.Image = global::GUI_for_Arduino.Properties.Resources.arabatepeden;
+            this.pictureBox1.Location = new System.Drawing.Point(1030, 111);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(602, 845);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.TabStop = false;
             // 
             // gauge4
             // 
@@ -1051,12 +1036,23 @@
             0});
             this.gauge2.Load += new System.EventHandler(this.gauge2_Load);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GUI_for_Arduino.Properties.Resources.logobeyaz;
+            this.pictureBox2.Location = new System.Drawing.Point(1663, 29);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(229, 170);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 36;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.ClientSize = new System.Drawing.Size(1904, 891);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
@@ -1075,7 +1071,6 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.gauge1);
             this.Controls.Add(this.gauge3);
-            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.chart4);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
@@ -1105,10 +1100,10 @@
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1133,7 +1128,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label9;
@@ -1155,7 +1149,6 @@
         private System.Windows.Forms.Label label15;
         private GaugeControl.Gauge gauge4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
         private System.Windows.Forms.Label label6;
@@ -1178,6 +1171,8 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

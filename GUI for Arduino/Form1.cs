@@ -12,6 +12,9 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 
+
+
+
 namespace GUI_for_Arduino
 {
     public partial class Form1 : Form
@@ -605,6 +608,12 @@ namespace GUI_for_Arduino
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var myForm = new Form();
+            myForm.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
