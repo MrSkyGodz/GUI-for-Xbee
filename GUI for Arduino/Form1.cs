@@ -19,8 +19,7 @@ namespace GUI_for_Arduino
         public string msg;
         public byte[] bytes_received = new byte[100];
         double time = 0;
-        Timer myTimer = new Timer();
-        Random random = new Random();
+        
 
         string file;
 
@@ -53,15 +52,18 @@ namespace GUI_for_Arduino
             // data count and time reset
             dataCount = 0;
             timer = (float)DateTime.Now.Millisecond / 1000 + (float)DateTime.Now.Second;
-            //image box
-            Image formula_img = pictureBox6.Image;
-            //formula_img.RotateFlip(RotateFlipType.Rotate270FlipX);
-            pictureBox6.Image = formula_img;
+
+            ////image box
+            //Image formula_img = pictureBox6.Image;
+
+            ////formula_img.RotateFlip(RotateFlipType.Rotate270FlipX);
+            //pictureBox6.Image = formula_img;
 
 
             //Baud Rates
             comboBox2.Items.Add(9600);
             comboBox2.Items.Add(115200);
+
             //Ports
             refresh_ports();
 
@@ -72,11 +74,12 @@ namespace GUI_for_Arduino
             //progress
             timer1.Enabled = true;
             timer1.Interval = 50;
+
             //Gauge
             timer2.Enabled = true;
             timer2.Interval = 10;
 
-
+            //charts
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart2.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart3.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -187,24 +190,29 @@ namespace GUI_for_Arduino
             chart4.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
 
             //speed
-
             label13.Text = " " + speed_.ToString() + " km/h";
-            //battery percentage
 
+            //battery percentage
             label4.Text = "%" + battery_percentage.ToString();
+
             //battery heat
             label7.Text = battery_heat.ToString() + " °C";
 
             //battery voltage
             textBox2.Text = battery_voltage.ToString() + " V";
+
             //battery current
             textBox1.Text = battery_current.ToString() + " A";
+
             //motor heat
             textBox3.Text = motor_heat.ToString() + " °C";
+
             //inverter heat
             textBox4.Text = inverter_heat.ToString() + " °C";
+
             //VSM
             textBox5.Text = vsm.ToString();
+
             //kw
             label5.Text = ((float)(battery_voltage * battery_current)/1000).ToString() + " Kw";
 
@@ -241,8 +249,6 @@ namespace GUI_for_Arduino
             textBox9.Text = (timenow - timer).ToString();
 
             // data timer visualizer
-            
-            
             if(dataCount % 2 == 1)
                 textBox10.BackColor = Color.LightGreen;
             else
@@ -292,19 +298,7 @@ namespace GUI_for_Arduino
             Console.WriteLine("Selected");
         }
 
-        int trans(int x)
-        {
-
-            int t = 0;
-            for (int i = x + 3; i >= x; i--)
-            {
-                t = t << 8;
-                t = t | bytes_received[i];
-            }
-            return t;
-
-
-        }
+       
 
         private void logger()
         {
@@ -321,69 +315,80 @@ namespace GUI_for_Arduino
                 
             }
         }
-        
+        int value = 0;
+        int trans()
+        {
+            int x = value * 4;
+            value++;
 
+            int t = 0;
+            for (int i = x + 3; i >= x; i--)
+            {
+                t = t << 8;
+                t = t | bytes_received[i];
+            }
+            
+            return t;
+        }
         private void SeriPortCom_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             try
             {
+                
                 Console.WriteLine("Success");
 
-                serialPort1.Read(bytes_received, 0, 47);
-                
+                serialPort1.Read(bytes_received, 0, 50);
 
-                time_stamp = trans(0);
+                value = 0;
+                time_stamp = trans();
 
                 Console.WriteLine(time_stamp);
-
-                Console.WriteLine(bytes_received[0]);
+                
 
                 if (time_stamp == -1)
                 {
                     dataCount++;
                     timer = (float)DateTime.Now.Millisecond / 1000 + (float)DateTime.Now.Second;
-                    motor_rpm = trans(4);
-                    Console.WriteLine(motor_rpm);
-                    //circularProgressBar1.Value = (int)motor_rpm;
 
+                    motor_rpm = trans();
+                    //Console.WriteLine(motor_rpm);
+                    
+                    vsm = trans();
+                    //Console.WriteLine(vsm);
 
                     
-                    vsm = trans(8);
-                    Console.WriteLine(vsm);
+                    internal_faults = trans();
+                    //Console.WriteLine(internal_faults);
 
                     
-                    internal_faults = trans(12);
-                    Console.WriteLine(internal_faults);
-
-                    
-                    battery_percentage = trans(16);
-                    Console.WriteLine(battery_percentage);
+                    battery_percentage = trans();
+                    //Console.WriteLine(battery_percentage);
 
                    
-                    battery_voltage = trans(20);
-                    Console.WriteLine(battery_voltage);
+                    battery_voltage = trans();
+                    //Console.WriteLine(battery_voltage);
 
 
                     
-                    battery_current = trans(24);
-                    Console.WriteLine(battery_current);
+                    battery_current = trans();
+                    //Console.WriteLine(battery_current);
 
 
-                    battery_heat = trans(28);
-                    Console.WriteLine(battery_heat);
+                    battery_heat = trans();
+                    //Console.WriteLine(battery_heat);
 
 
 
-                    motor_heat = trans(32);
-                    Console.WriteLine(motor_heat);
-
-                    
-                    inverter_heat = trans(36);
-                    Console.WriteLine(inverter_heat);
+                    motor_heat = trans();
+                   // Console.WriteLine(motor_heat);
 
                     
-                    speed_ = trans(40);
-                    Console.WriteLine(speed_);
+                    inverter_heat = trans();
+                    //Console.WriteLine(inverter_heat);
+
+                    
+                    speed_ = trans();
+                   // Console.WriteLine(speed_);
 
                     richTextBox1.Invoke(new EventHandler(delegate
                     {
@@ -399,9 +404,6 @@ namespace GUI_for_Arduino
                         richTextBox1.AppendText(motor_heat.ToString() + " ");
                         richTextBox1.AppendText(inverter_heat.ToString() + " ");
                         richTextBox1.AppendText(speed_.ToString() + "\n");
-                        //richTextBox1.AppendText(fault_message.ToString() + "\n");
-
-
                     }));
 
                     logger();
@@ -409,23 +411,6 @@ namespace GUI_for_Arduino
 
                 
 
-
-                //Console.WriteLine(text[5]);
-                //Console.WriteLine(text[7]);
-                //Console.WriteLine(text[8]);
-
-                
-
-                //if ((int)text[text.Length - 1] == 10)
-                //{
-                //    msg = msg + text;
-                //    Console.WriteLine(msg);
-                //    msg = "";
-                //}
-                //else
-                //{
-                //    msg = msg + text;
-                //}
 
 
 
@@ -482,12 +467,7 @@ namespace GUI_for_Arduino
 
 
 
-        private void circularProgressBar1_Click_1(object sender, EventArgs e)
-        {
-
-
-        }
-
+     
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -640,9 +620,6 @@ namespace GUI_for_Arduino
             
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
     }
 }

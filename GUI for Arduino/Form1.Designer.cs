@@ -96,9 +96,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.gauge4 = new GaugeControl.Gauge();
             this.gauge1 = new GaugeControl.Gauge();
             this.gauge3 = new GaugeControl.Gauge();
@@ -227,7 +227,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(707, 272);
             this.panel1.TabIndex = 10;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label21
             // 
@@ -751,6 +750,19 @@
             this.panel2.Size = new System.Drawing.Size(200, 100);
             this.panel2.TabIndex = 34;
             // 
+            // button6
+            // 
+            this.button6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.25F);
+            this.button6.Location = new System.Drawing.Point(11, 13);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(46, 19);
+            this.button6.TabIndex = 37;
+            this.button6.Text = "file";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // textBox11
             // 
             this.textBox11.Cursor = System.Windows.Forms.Cursors.No;
@@ -773,16 +785,6 @@
             this.label22.TabIndex = 35;
             this.label22.Text = "Logging";
             this.label22.Click += new System.EventHandler(this.label22_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(11, 15);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(46, 17);
-            this.button6.TabIndex = 37;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // gauge4
             // 
