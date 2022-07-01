@@ -411,17 +411,12 @@ namespace GUI_for_Arduino
 
                     logger();
                 }
-
-                
-
-
-
-
+                 
 
             }
             catch
             {
-                MessageBox.Show("Something gone wrong..", "Error-322EDA23");
+                MessageBox.Show("Something gone wrong.. Please restart the application!", "Error-322EDA23");
             }
         }
 
@@ -612,9 +607,14 @@ namespace GUI_for_Arduino
 
         private void button7_Click(object sender, EventArgs e)
         {
-            var myForm = new Form();
-            myForm.Show();
+           
+            fromtxt txt = new fromtxt();
+            txt.Show();
+            //this.Hide();
+            
         }
+
+      
 
         private void button6_Click(object sender, EventArgs e)
         {
