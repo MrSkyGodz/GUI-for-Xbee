@@ -48,10 +48,12 @@ namespace GUI_for_Arduino
             InitializeComponent();
             Init();
         }
+
         void Init()
         {
-            isLogging = false;
-            
+
+            initLogger();
+
             // data count and time reset
             dataCount = 0;
             timer = (float)DateTime.Now.Millisecond / 1000 + (float)DateTime.Now.Second;
@@ -107,6 +109,17 @@ namespace GUI_for_Arduino
             speed_ = 0;
 
         }
+        void initLogger()
+        {
+            file = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            file = @file + "\\" + "log_" + DateTime.Now.ToString("dd_MMM_yyyy__HH_mm_ss") + ".txt";
+
+            isLogging = true;
+            button4.Enabled = false;
+            button4.Cursor = Cursors.No;
+            button5.Enabled = true;
+            button5.Cursor = Cursors.Hand;
+        }
 
         
 
@@ -137,16 +150,19 @@ namespace GUI_for_Arduino
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //chart 1
-            chart1.Series[0].Points.AddXY(time, 3 * Math.Sin(5 + time) + 5 * Math.Cos(3 + time));
 
-            if (chart1.Series[0].Points.Count > 100)
+            //chart 1
+            //chart1.Series[0].Points.AddXY(time, 3 * Math.Sin(5 + time) + 5 * Math.Cos(3 + time));
+            chart1.Series[0].Points.AddXY(time, (double)battery_voltage);
+            if (chart1.Series[0].Points.Count > 500)
                 chart1.Series[0].Points.RemoveAt(0);
 
             chart1.ChartAreas[0].AxisX.Minimum = chart1.Series[0].Points[0].XValue;
             chart1.ChartAreas[0].AxisX.Maximum = time;
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "0.0";
             chart1.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = false;
+            chart1.ChartAreas[0].AxisY.Minimum = 300;
+            chart1.ChartAreas[0].AxisY.Maximum = 400;
 
 
             // chart 2
@@ -340,7 +356,7 @@ namespace GUI_for_Arduino
                 
                 Console.WriteLine("Success");
 
-                serialPort1.Read(bytes_received, 0, 50);
+                serialPort1.Read(bytes_received, 0, 44);
 
                 value = 0;
                 time_stamp = trans();
